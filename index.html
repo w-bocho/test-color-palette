@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <!-- Site -->
+        <!-- In-page -->
+        <title>Uverit Color Palette</title>
+        <meta name="description" content="Uverit Color Palette - a program designed as a presentation tool for brand style guide.">
+        <meta name="keywords" content="color palette, brand style guide, typefaces, fonts, colors, color style, color scheme, brand identity, company colors">
+        <meta name="author" content="Uverit">
+        
+        <!-- Settings -->
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="shortcut icon" href="int_resources/img/uverit-favicon-bbg.svg" type="image/x-icon">
+        <link rel="stylesheet" type="text/css" href="int_resources/css/general.css">
+        <link rel="stylesheet" type="text/css" href="int_resources/css/main.css">
+        
+        <!-- Scripts -->
+        <script src="int_resources/js/ScriptPackCP.js" defer></script>
+        <script src="int_resources/js/svg.js"></script>
+        <script src="int_resources/js/0_config.js"></script>
+        <script src="int_resources/js/navigation.js"></script>
+    </head>
+        
+    <body>
+
+        <div id="hidden-contents"> 
+            
+    <!-- SCROLLTOP -->
+            <div id="scrolltop" onclick="scrollToTop()">
+                <div class="scrollarrow"></div>
+            </div>
+    <!-- /SCROLLTOP -->
+        
+        </div>
+        
+    <!-- NAVBAR -->
+        <nav>
+            <script>
+                baseNav();
+            </script>
+        </nav>
+    <!-- /NAVBAR -->
+        
+    <!-- BACKGROUND -->
+        <div class="main-bg-grad" id="main-bg-grad"></div>
+        <div class="main-background"></div>
+    <!-- /BACKGROUND -->
+        
+        <main>
+            
+    <!-- MAIN-MODULE -->
+            <div class="main-wrapper wrapper">
+                <div class="main-module-content">
+
+                    <div class="pdf-btn pdfNoPrint">
+                        <p>Save</p>
+                    </div>
+
+                    <div class="main-header">
+                        <script>
+                            mainHeader();
+                        </script>
+                    </div>
+
+                    <div class="color-tiles"></div>
+
+                </div>
+            </div>
+    <!-- /MAIN-MODULE -->
+
+        </main>
+
+    <!-- FOOTER -->
+        <footer>
+            <script>
+                baseFooter();
+            </script>
+        </footer>
+    <!-- /FOOTER -->
+<script>
+
+        /* Color Tiles */
+
+    const colorNames = [
+        ucp1aname,
+        ucp1name,
+        ucp3name,
+        ucp2name,
+        ucp2aname
+    ];
+
+    let tiles = "";
+        
+    for (let tile = 0; tile <= 4; tile++){
+        
+        tiles += 
+        `<div class='tile tile${tile}'>` +
+
+            "<div class='ct-tile-name'>" +
+                cpColorNames[tile] +
+            "</div>" +
+
+            "<div class='ct-color' style='background:"+colorArray[tile]+"'></div>" +
+
+            "<div class='ct-content'>" +
+
+                "<h4 class='ct-name'>" +
+                    colorNames[tile] +
+                "</h4>" +
+
+                "<div class='ct-content-inner'></div>" +
+
+            "</div>" +
+
+        "</div>" +
+        `<div class='tile-break tile-break${tile}'></div>`;
+    }
+
+    document.querySelector(".color-tiles").innerHTML = tiles;
+    
+    if (hexValues){
+        for (let tile = 0; tile <= 4; tile++){
+
+            const hexVal =
+            "<div class='ct-values'>" +
+                "<p class='ct-values-txt'>HEX</p>" +
+                `<p class='ct-values-txt ct-val ucp-hex${tile}'></p>` +
+            "</div>";
+
+            document.querySelector(".tile"+tile+" .ct-content-inner").innerHTML += hexVal;
+        }
+    }
+
+    if (rgbValues){
+        for (let tile = 0; tile <= 4; tile++){
+
+            const rgbVal =
+            "<div class='ct-values'>" +
+                "<p class='ct-values-txt'>RGB</p>" +
+                `<p class='ct-values-txt ct-val ucp-rgb${tile}'></p>` +
+            "</div>";
+
+            document.querySelector(".tile"+tile+" .ct-content-inner").innerHTML += rgbVal;
+        }
+    }
+
+    if (hslValues){
+        for (let tile = 0; tile <= 4; tile++){
+
+            const hslVal =
+            "<div class='ct-values'>" +
+                "<p class='ct-values-txt'>HSL</p>" +
+                `<p class='ct-values-txt ct-val ucp-hsl${tile}'></p>` +
+            "</div>";
+
+            document.querySelector(".tile"+tile+" .ct-content-inner").innerHTML += hslVal;
+        }
+    }
+
+    if (cmykValues){
+        for (let tile = 0; tile <= 4; tile++){
+
+            const cmykVal =
+            "<div class='ct-values'>" +
+                "<p class='ct-values-txt'>CMYK</p>" +
+                `<p class='ct-values-txt ct-val ucp-cmyk${tile}'></p>` +
+            "</div>";
+
+            document.querySelector(".tile"+tile+" .ct-content-inner").innerHTML += cmykVal;
+        }
+    }
+
+        /* Copy Color Values */
+
+    document.querySelectorAll(".ct-values").forEach(function(valElem){
+        valElem.addEventListener('click', function(){
+
+            let copyVal = this.querySelector('.ct-val').innerHTML;
+
+            // Add the color model name
+            switch (this.querySelectorAll(".ct-values-txt")[0].innerHTML){
+                case "RGB":
+                    copyVal = "rgb("+copyVal+")";
+                    break;
+                case "HSL":
+                    copyVal = "hsl("+copyVal+")";
+                    break;
+                case "CMYK":
+                    copyVal = "cmyk("+copyVal+")";
+                    break;
+            }
+
+            let temp = document.createElement("input");
+            document.body.appendChild(temp);
+
+            temp.value = copyVal;
+            temp.select();
+            document.execCommand("copy");
+            temp.remove();
+
+            valElem.classList.add('copied');
+            setTimeout(function() {
+                valElem.classList.remove('copied');
+            }, 1000);
+
+        });
+    });
+
+                
+        /* Tile fade-in/out */
+    
+    const colorTiles = document.getElementsByClassName("tile");
+
+    function tileFade(){
+        
+        for (let item = 0; item < colorTiles.length; item++){
+        
+            let tile = colorTiles[item];
+            let tilePos = tile.getBoundingClientRect();
+
+            let windowHeight = window.innerHeight;
+
+            if (tilePos.top < windowHeight * 0.9){
+                tile.classList.add("fade-in");
+            } else {
+                tile.classList.remove("fade-in");
+            }
+
+            if (tilePos.top < -windowHeight * 0.4){
+                tile.classList.remove("fade-in");
+            }
+
+        }
+        
+    }
+
+    window.addEventListener("load", tileFade);
+    window.addEventListener("scroll", tileFade);
+    window.addEventListener("resize", tileFade);
+</script>
+    </body>
+</html>
