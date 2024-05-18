@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <!-- Site -->
+        <!-- In-page -->
+        <title>Uverit Color Chart</title>
+        <meta name="description" content="Uverit Color Palette - a program designed as a presentation tool for brand style guide.">
+        <meta name="keywords" content="color palette, brand style guide, typefaces, fonts, colors, color style, color scheme, brand identity, company colors">
+        <meta name="author" content="Uverit">
+        
+        <!-- Settings -->
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="shortcut icon" href="../img/uverit-favicon-bbg.svg" type="image/x-icon">
+        <link rel="stylesheet" type="text/css" href="../css/general.css">
+        <link rel="stylesheet" type="text/css" href="../css/color-chart.css">
+        
+        <!-- Scripts -->
+        <script src="../js/ScriptPackCP.js" defer></script>
+        <script src="../js/svg.js"></script>
+        <script src="../js/0_config.js"></script>
+        <script src="../js/navigation.js"></script>
+        <script src="../js/color-chart.js" defer></script>
+    </head>
+        
+    <body>
+
+        <div id="hidden-contents"> 
+            
+    <!-- SCROLLTOP -->
+            <div id="scrolltop" onclick="scrollToTop()">
+                <div class="scrollarrow"></div>
+            </div>
+    <!-- /SCROLLTOP -->
+        
+        </div>
+        
+    <!-- NAVBAR -->
+        <nav>
+            <script>
+                baseNav();
+            </script>
+        </nav>
+    <!-- /NAVBAR -->
+        
+    <!-- BACKGROUND -->
+        <div class="main-bg-grad" id="main-bg-grad"></div>
+        <div class="main-background"></div>
+    <!-- /BACKGROUND -->
+        
+        <main>
+            
+    <!-- MAIN-MODULE -->
+            <div class="main-wrapper wrapper">
+                <div class="main-module-content">
+
+                    <div class="pdf-btn pdfNoPrint">
+                        <p>Save</p>
+                    </div>
+
+                    <div class="main-header">
+                        <script>
+                            mainHeader();
+                        </script>
+                    </div>
+
+                    <div class="color-chart">
+
+                        <div class="chart">
+                            <svg class="ring-chart">
+                                <circle class="ring rc-ring"></circle>
+                                
+                                <circle class="ring rc-item rc-item0"></circle>
+                                <circle class="ring rc-item rc-item1"></circle>
+                                <circle class="ring rc-item rc-item2"></circle>
+                                <circle class="ring rc-item rc-item3"></circle>
+                                <circle class="ring rc-item rc-item4"></circle>
+
+                                <circle class="ring load-ring"></circle>
+                            </svg>
+
+                            <div class="chart-txt">
+                                <h3 class="ratio-txt"></h3>
+                                <h4 class="color-txt"></h4>
+                            </div>
+                        </div>
+
+                        <div class="chart-info">
+                            <h3>Why is <span>Color Ratio</span> important?</h3>
+
+                            <p>At its core, color ratio is a matter of visual balance, a concept that is used to create a visual language that resonates with the intended audience.</p>
+
+                            <p>Colors have the power to evoke emotions and convey meaning, but an excessive or unbalanced use of color can be jarring or even repelling to the viewer.</p>
+
+                            <p>By determining the proportion of different colors in a composition, designers can create a sense of order, hierarchy, and rhythm that invites the viewer to engage with the design.</p>
+
+                            <p>Color ratio is particularly important in today's digital landscape, where users are constantly bombarded with a vast array of visual stimuli that compete for their attention. A well-calibrated color ratio can make the difference between a design that is instantly forgettable and one that captures the viewer's imagination leaving a lasting impression.</p>
+                            
+                            <p>To optimize the visual impact of a design, it is essential to examine the colors within their intended context, experiment with various permutations, and formulate judicious conclusions to ensure a visually striking and aesthetically pleasing outcome.</p>
+                        </div>
+
+                        <div class="color-ratio"></div>
+                    </div>
+                    
+                </div>
+            </div>
+    <!-- /MAIN-MODULE -->
+
+        </main>
+
+    <!-- FOOTER -->
+        <footer>
+            <script>
+                baseFooter();
+            </script>
+        </footer>
+    <!-- /FOOTER -->
+
+    </body>
+</html>
